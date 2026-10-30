@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://homelab.vigab.cc/sitemap.xml

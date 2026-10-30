@@ -1,0 +1,13 @@
+{
+  "name": "homelab-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Public showcase of a self-hosted homelab with an interactive map. Static, no dependencies.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "scripts": {
+    "check": "node check.mjs",
+    "check:test": "node check.mjs --self-test",
+    "preview": "python3 -m http.server 4173 --directory public"
+  }
+}
