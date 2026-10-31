@@ -46,10 +46,6 @@ const DATA = {
       {
         "href": "#stack",
         "label": "Stack"
-      },
-      {
-        "href": "#roadmap",
-        "label": "Roadmap"
       }
     ],
     "themeToLight": "Switch to light theme",
@@ -66,7 +62,7 @@ const DATA = {
           "br": true
         }
       ],
-      "lede": "A home for files, photos and home automation, built with self-hosted tools. Explore the roles behind the services, how they depend on each other, and what is planned next.",
+      "lede": "A home for files, photos and home automation, built with self-hosted tools. Explore the roles behind the services and how they depend on each other.",
       "ctaPrimary": {
         "href": "#map",
         "label": "Explore the map"
@@ -75,24 +71,6 @@ const DATA = {
         "href": "#principles",
         "label": "How it is designed"
       },
-      "facts": [
-        {
-          "value": "Compute",
-          "label": "services on a hypervisor"
-        },
-        {
-          "value": "Storage",
-          "label": "files, photos and snapshots"
-        },
-        {
-          "value": "Access",
-          "label": "encrypted connections and passkeys"
-        },
-        {
-          "value": "Backup",
-          "label": "an encrypted off-site copy"
-        }
-      ],
       "orbit": {
         "label": "Illustration: the home at the centre, its services around it, and remote devices on an outer ring.",
         "center": {
@@ -173,7 +151,7 @@ const DATA = {
         {
           "icon": "backup",
           "title": "Keep more than one copy",
-          "text": "Snapshots support recovery from unwanted changes. An encrypted off-site copy adds a separate destination. Local replication is planned."
+          "text": "Snapshots support recovery from unwanted changes. An encrypted off-site copy adds a separate destination."
         },
         {
           "icon": "eye",
@@ -182,8 +160,8 @@ const DATA = {
         },
         {
           "icon": "doc",
-          "title": "Document first, add monitoring next",
-          "text": "Documentation covers everyday use and maintenance. Service monitoring and alerting are planned; they are not running yet."
+          "title": "Keep the system understandable",
+          "text": "Documentation explains everyday use, component roles and maintenance. Keeping it current makes the system easier to understand and maintain."
         }
       ]
     },
@@ -293,37 +271,6 @@ const DATA = {
         }
       ]
     },
-    "roadmap": {
-      "eyebrow": "Roadmap",
-      "title": "Where it is heading",
-      "lede": "Directions, not dates.",
-      "items": [
-        {
-          "icon": "pulse",
-          "tag": "Next",
-          "title": "Monitoring and alerting",
-          "text": "Uptime checks from inside the house and from outside it, then metrics, dashboards and alerts that reach a phone."
-        },
-        {
-          "icon": "replica",
-          "tag": "Planned",
-          "title": "Local replication",
-          "text": "A second NAS receiving ZFS replication, so a full local copy sits next to the off-site one."
-        },
-        {
-          "icon": "restore",
-          "tag": "Planned",
-          "title": "Restore drills",
-          "text": "A backup only counts once a restore has worked. Regular, written-down restore tests."
-        },
-        {
-          "icon": "doc",
-          "tag": "Ongoing",
-          "title": "Keep documentation useful",
-          "text": "Review the guides as services change, for both everyday use and maintenance."
-        }
-      ]
-    },
     "footer": {
       "owner": "homelab.vigab.cc",
       "note": "No cookies, trackers or analytics. A simplified public diagram with generic names.",
@@ -366,7 +313,7 @@ const DATA = {
     "routes": "Variants",
     "then": ", then ",
     "mapTitle": "Map of the homelab",
-    "mapDesc": "A simplified diagram of client devices, cloud services, an ISP router, a hypervisor and a NAS. Local replication is planned. Deployment routes and access controls are omitted.",
+    "mapDesc": "A simplified diagram of client devices, cloud services, an ISP router, a hypervisor and storage systems. Deployment routes and access controls are omitted.",
     "nodeAria": "{name}: {sub}. Press Enter for details.",
     "hint": "Zoom in for labels; drag sideways to pan on touch. Scroll vertically to keep reading. Use the steps below to open any component."
   },
@@ -1496,7 +1443,7 @@ const DATA = {
         "replica": [
           "Local replica",
           "second NAS",
-          "A second NAS that will receive a local ZFS replica of the main one."
+          "A second NAS for local ZFS replication."
         ]
       },
       "edges": {
@@ -1557,8 +1504,8 @@ const DATA = {
           "Snapshots of shared data."
         ],
         "e_nas_replica": [
-          "planned",
-          "Local replication is planned."
+          "replica",
+          "Local ZFS replication between storage systems."
         ],
         "e_lan_shares": [
           "files",
@@ -1588,7 +1535,7 @@ const DATA = {
         "vpn": {
           "chip": "Home via VPN",
           "name": "Explore VPN connectivity",
-          "desc": "Follow the roles involved in VPN connectivity. Access rules and deployment details are omitted.",
+          "desc": "Follow the roles involved in VPN connectivity.",
           "routes": {
             "main": "Device → VPN gateway"
           }
@@ -1596,7 +1543,7 @@ const DATA = {
         "mesh": {
           "chip": "Home via mesh VPN",
           "name": "Explore mesh VPN connectivity",
-          "desc": "Follow the roles involved in mesh VPN connectivity. This diagram does not document routing or access rules.",
+          "desc": "Follow the roles involved in mesh VPN connectivity.",
           "routes": {
             "main": "Laptop → mesh → home"
           }
@@ -1613,7 +1560,7 @@ const DATA = {
         "cloud": {
           "chip": "Cloud storage",
           "name": "Open the self-hosted cloud storage",
-          "desc": "Cloud storage runs on the hypervisor and depends on the identity provider for passkey sign-in. The access path is omitted.",
+          "desc": "Cloud storage runs on the hypervisor and depends on the identity provider for passkey sign-in.",
           "routes": {
             "main": "Hypervisor → cloud storage"
           }
@@ -1621,7 +1568,7 @@ const DATA = {
         "photos": {
           "chip": "Photo library",
           "name": "Browse the photo library",
-          "desc": "The photo library runs on the NAS. This view shows the hosting relationship; the access path is omitted.",
+          "desc": "The photo library runs on the NAS. This view shows the hosting relationship.",
           "routes": {
             "main": "NAS → photo library"
           }
@@ -1647,7 +1594,7 @@ const DATA = {
         "backup": {
           "chip": "Backups",
           "name": "Where the copies go",
-          "desc": "Snapshots and an encrypted off-site copy are in use. Local replication to a second NAS is planned.",
+          "desc": "Explore snapshots, an encrypted off-site copy and local replication.",
           "routes": {
             "offsite": "Off-site, encrypted",
             "snaps": "Snapshots",
@@ -1665,7 +1612,7 @@ const DATA = {
         "ddns": {
           "chip": "Dynamic DNS",
           "name": "Explore dynamic DNS",
-          "desc": "The updater keeps DNS address information current. Records and configuration are omitted.",
+          "desc": "The updater keeps DNS address information current.",
           "routes": {
             "main": "Updater → DNS"
           }
@@ -1774,13 +1721,6 @@ const DATA = {
     icon("down", a1);
     el("a", { "class": "btn btn-ghost", href: H.ctaSecondary.href }, cta, H.ctaSecondary.label);
 
-    var facts = $("#facts");
-    H.facts.forEach(function (f, i) {
-      var li = el("li", { "class": "fact reveal", style: "--i:" + i }, facts);
-      el("b", null, li, f.value);
-      el("span", null, li, f.label);
-    });
-
     var O = H.orbit, art = $("#orbit");
     art.setAttribute("aria-label", O.label);
     el("div", { "class": "orb-glow", "aria-hidden": "true" }, art);
@@ -1839,27 +1779,29 @@ const DATA = {
     });
   }
 
-  function renderRoadmap() {
-    var D = P.roadmap;
-    secHead($("#roadmap-head"), D, "roadmap-h");
-    var ol = $("#roadmap-list");
-    D.items.forEach(function (it, i) {
-      var li = el("li", { "class": "rcard reveal", style: "--i:" + i }, ol);
-      var top = el("div", { "class": "rcard-top" }, li);
-      var ic = el("span", { "class": "rcard-ic" }, top);
-      icon(it.icon, ic);
-      el("span", { "class": "tag" + (i === 0 ? " tag-next" : "") }, top, it.tag);
-      el("h3", null, li, it.title);
-      el("p", null, li, it.text);
-    });
-  }
-
   function renderFooter() {
     var f = $("#foot");
     var line = el("p", { "class": "foot-main" }, f);
     el("span", null, line, P.footer.copyright.replace("{year}", new Date().getFullYear()));
     el("a", { href: "https://" + DATA.site.home + "/" }, line, P.footer.owner);
     el("p", { "class": "foot-note" }, f, P.footer.note);
+  }
+
+  /* Header state is shared by restored scroll positions and user scrolling. */
+  function setupHeaderScroll() {
+    var header = $(".site-header"), scheduled = false;
+    function syncHeader() {
+      header.classList.toggle("is-scrolled", window.scrollY > 8);
+      scheduled = false;
+    }
+    function scheduleHeader() {
+      if (scheduled) return;
+      scheduled = true;
+      window.requestAnimationFrame(syncHeader);
+    }
+    window.addEventListener("scroll", scheduleHeader, { passive: true });
+    window.addEventListener("pageshow", scheduleHeader);
+    syncHeader();
   }
 
   /* ---------- theme ---------- */
@@ -2794,13 +2736,13 @@ const DATA = {
 
   /* ---------- start ---------- */
   renderHeader();
+  setupHeaderScroll();
   renderHero();
   secHead($("#map-head"), P.mapHead, "map-h");
   $("#pick-h").textContent = U.pickTitle;
   $("#pick-p").textContent = U.pickHint;
   renderPrinciples();
   renderStack();
-  renderRoadmap();
   renderFooter();
   renderTheme();
 

@@ -1,17 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#7b6bff"/>
-      <stop offset="1" stop-color="#e05cd0"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="16" fill="url(#g)"/>
-  <g fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M21 20h22M19 24l11 20M45 24 34 44"/>
-  </g>
-  <g fill="#fff">
-    <circle cx="16" cy="20" r="6"/>
-    <circle cx="48" cy="20" r="6"/>
-    <circle cx="32" cy="47" r="6"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#060918"/>
+  <rect x="0.5" y="0.5" width="31" height="31" fill="none" stroke="#8f7bff" stroke-opacity="0.45"/>
+  <g transform="translate(4 4)" stroke="#8f7bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7.7 6h8.6M6.6 8l4.3 8M17.4 8l-4.3 8" fill="none"/>
+    <g fill="#8f7bff" stroke="none"><circle cx="5.5" cy="6" r="2.2"/><circle cx="18.5" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/></g>
   </g>
 </svg>

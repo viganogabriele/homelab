@@ -20,8 +20,12 @@ public/                  what gets deployed (the whole site)
   assets/app.js          const DATA (all copy and the map model) + rendering, vanilla JS
   assets/site.css        styles, light and dark themes, reduced motion
   assets/theme.js        applies the saved theme before first paint
-  favicon.svg, apple-touch-icon.png, og.png, robots.txt, sitemap.xml
+  favicon.svg            abstract network mark shared with the navbar
+  apple-touch-icon.png    network mark, rendered at 180x180
+  og.png                 sharing image, rendered at 1200x630
+  robots.txt, sitemap.xml
 design/                  sources of the generated images (og.svg, apple-touch-icon.svg)
+_review/                 local screenshots and browser verification (not deployed)
 check.mjs                sanitization check, zero dependencies
 vercel.json              static deploy: runs the check, serves public/, security headers
 ```
@@ -34,7 +38,7 @@ analytics. A strict Content Security Policy allows only the site's own files.
 All text lives in **one place**: the `const DATA = { ... }` block at the top of
 `public/assets/app.js`.
 
-- `DATA.page` holds the hero, principles, stack, roadmap and footer copy.
+- `DATA.page` holds the hero, principles, stack and footer copy.
 - `DATA.ui` holds the map interface labels.
 - `DATA.map` holds the map: `zones`, `groups`, `router`, `bus`, `nodes`, `edges`, `services`
   and their texts in `DATA.map.text`. The comment above `DATA` explains the model
@@ -50,8 +54,8 @@ Rules of thumb for the map:
   configuration (Proxmox, TrueNAS, WireGuard, Tailscale, Traefik, Immich, Home Assistant...).
 - Do not show what is exposed to the internet or on which port, and do not add retired or
   broken hardware.
-- Do not claim anything that is not true yet: planned work uses `state: "planned"` or goes in
-  the roadmap, without dates.
+- Do not claim anything that is not true yet: map states use `state: "planned"` where
+  appropriate. Describe component roles without announcing absent or future controls.
 
 Preview locally (any static server works; the CSP needs http, not `file://`):
 
@@ -59,6 +63,14 @@ Preview locally (any static server works; the CSP needs http, not `file://`):
 npm run preview          # python3 -m http.server 4173 --directory public
 # then open the local address it prints
 ```
+
+### Browser review
+
+Use Chromium DevTools to check dark and light themes at desktop and phone widths.
+The header changes colour after a small scroll and resets at the top; reduced motion
+makes this state change immediate. Check wheel and touch scrolling, horizontal overflow,
+console errors, anchor and ARIA targets, and navbar text contrast. Save evidence in `_review/`.
+Review the network favicon at 16, 32 and 64 pixels on light and dark backgrounds.
 
 ### Regenerating the images
 
@@ -99,8 +111,8 @@ This is a heuristic guard, not a proof of privacy: unknown personal names, arbit
 and text baked into pixels still need manual review. Never copy private source files into this
 folder. A false positive is fixed by rewording the content, never by weakening a rule.
 
-The labels “in use” and “planned” describe the diagram, not live availability. Monitoring is
-planned. The map deliberately omits app exposure, endpoint names and transport configuration.
+The labels “in use” and “planned” describe the diagram, not live availability.
+The map deliberately omits app exposure, endpoint names and transport configuration.
 
 Final review evidence belongs in `_review/`, outside `public/`. It is not deployed. Browser
 profiles are temporary and must be deleted after review; do not publish raw browser profiles.
